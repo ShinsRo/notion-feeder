@@ -48227,7 +48227,8 @@ const {
 async function getNewFeedItemsFrom(feedUrl) {
   const parser = new (rss_parser_default())({
     headers: {
-      Accept: 'text/html,application/xhtml+xml,application/xml;'
+      'User-Agent': 'notion-feed-reader/1.0',
+      Accept: 'application/atom+xml, application/xml;q=0.9, */*;q=0.8'
     }
   });
   let rss;

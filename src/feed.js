@@ -9,7 +9,10 @@ const { RUN_FREQUENCY } = process.env;
 
 async function getNewFeedItemsFrom(feedUrl) {
   const parser = new Parser({
-    headers: { Accept: 'text/html,application/xhtml+xml,application/xml;' },
+    headers: {
+      'User-Agent': 'notion-feed-reader/1.0',
+      Accept: 'application/atom+xml, application/xml;q=0.9, */*;q=0.8',
+    },
   });
   let rss;
   try {
