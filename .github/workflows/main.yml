@@ -2,7 +2,7 @@ name: Get Feed
 
 on:
   schedule:
-    - cron: '30 12 * * *' # 6pm IST
+    - cron: '30 4,9 * * *' # 1:30 AM, 6:30 PM KST
   workflow_dispatch:
 
 jobs:
@@ -14,6 +14,9 @@ jobs:
       NOTION_FEEDS_DATABASE_ID: ${{ secrets.NOTION_FEEDS_DATABASE_ID }}
       RUN_FREQUENCY: 86400 # in seconds
     steps:
+      - name: Set up Repository
+        uses: actions/checkout@v2
+
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -21,5 +24,4 @@ jobs:
 
       - name: Update Notion Feed
         run: |
-          curl -o index.js https://raw.githubusercontent.com/ravgeetdhillon/notion-feeder/build/dist/index.js
-          node index.js
+          node dist/index.js
