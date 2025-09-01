@@ -8,7 +8,9 @@ dotenv.config();
 const { RUN_FREQUENCY } = process.env;
 
 async function getNewFeedItemsFrom(feedUrl) {
-  const parser = new Parser();
+  const parser = new Parser({
+    headers: { Accept: 'text/html,application/xhtml+xml,application/xml;' },
+  });
   let rss;
   try {
     rss = await parser.parseURL(feedUrl);

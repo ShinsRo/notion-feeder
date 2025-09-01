@@ -48225,7 +48225,11 @@ const {
 } = process.env;
 
 async function getNewFeedItemsFrom(feedUrl) {
-  const parser = new (rss_parser_default())();
+  const parser = new (rss_parser_default())({
+    headers: {
+      Accept: 'text/html,application/xhtml+xml,application/xml;'
+    }
+  });
   let rss;
 
   try {
