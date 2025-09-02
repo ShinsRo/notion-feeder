@@ -48236,6 +48236,7 @@ async function getNewFeedItemsFrom(feedUrl) {
   try {
     rss = await parser.parseURL(feedUrl);
   } catch (error) {
+    console.error(`Failed to fetch feed from: ${feedUrl}`);
     console.error(error);
     return [];
   }
